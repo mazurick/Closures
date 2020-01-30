@@ -1,0 +1,121 @@
+import UIKit
+
+
+var str = "Hello, playground"
+
+func printString(_ string: String) {
+    
+    print("Printing the string passed in as an argument: \(string)")
+    
+}
+
+printString("Hi my name is Adam")
+
+let stringPrinterFunction = printString
+
+func sum (_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+let addTwoNumbers = sum
+
+addTwoNumbers(1,2)
+
+
+// Here I'm practicing using functions as parameters
+
+func displayString (usingFunction function: (String) -> Void) {
+    function("I'm a function inside a function.")
+}
+
+displayString(usingFunction: printString)
+
+// Challenge No.1 
+
+func addTwo(to: Int) -> Int {
+    return to + 2
+}
+
+let addition = addTwo
+
+let resultOne = addition(2)
+
+
+
+extension Int {
+    
+    func applyOperation(_ operation: (Int) -> Int) -> Int {
+        return operation(self)
+    }
+    
+}
+
+func double(_ value: Int) -> Int {
+    return value * 2
+}
+
+2.applyOperation(double)
+
+func closestMultipleOfSix(_ value: Int) -> Int {
+    for x in 1...100 {
+        let multiple = x * 6
+        
+        if multiple - value < 6 && multiple > value {
+            return multiple
+        } else if multiple == value {
+            return value
+        }
+    }
+    
+    return 0
+}
+
+32.applyOperation(closestMultipleOfSix)
+
+// Here I want to practice returning functions.
+
+typealias IntergerFunction = (Int) -> Void
+
+func gameCounter() -> IntergerFunction {
+    
+    func increment(_ i: Int) {
+        print("Integer passed in : \(i)")
+    }
+    
+    return increment
+    
+}
+
+let counter = gameCounter()
+counter(1)
+
+
+// Challenge
+
+extension String {
+    
+    func transform (_ ation: (String) -> String ) -> String  {
+        return ation(self)
+    }
+    
+}
+
+func removeVowels(from value: String) -> String {
+    let vowels: [Character] = ["a", "e", "i", "o", "u"]
+    var newString: String = ""
+    
+    for character in value {
+        if !vowels.contains(character) {
+            newString.append(character)
+        }
+    }
+    
+    return newString
+}
+
+let result = ("Adam Mazurick").transform(removeVowels)
+
+
+
+
+
