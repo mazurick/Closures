@@ -115,7 +115,33 @@ func removeVowels(from value: String) -> String {
 
 let result = ("Adam Mazurick").transform(removeVowels)
 
+// Closure expression syntax
+ 
 
+// Rule # 1: Define the closure online.
+
+let tripledNumbers = numbers.map( { (value: Int) -> Int in
+    
+    return value * 3
+    
+})
+
+//Rule #2: Inferring type from context
+
+numbers.map({ value in return value * 3 })
+
+// Rule #3: Implicit returns from single-expression closures
+
+let tom = numbers.map({ value in value * 3 })
+print(tom)
+
+// Rule #4: shorthand Argument Names
+
+numbers.map({ $0 * 3 })
+
+// Rule #5: Trailing closure
+
+numbers.map() { $0 * 3 }
 
 
 
